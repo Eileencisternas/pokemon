@@ -1,28 +1,39 @@
 import React from 'react'
-import { NavItem } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import { NavLink } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import logo from '../asset/img/Logo.jpg'
 
 
 
 function PokeNav() {
-    const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
+  const setActive = ({ isActive }) => (isActive ? "active" : undefined);
   return (
-    <nav className="navbar navbar-dark bg-red">
-       <div className="container">
-       <NavLink end className={ setActiveClass } to="/">
-        
-    Home
-    </NavLink>
-    <NavLink className={ setActiveClass } to="/pokemones">
-    Personajes
-    </NavLink>
-    <NavItem> logo </NavItem>
- 
+    <Navbar className="d-flex justify-content-between px-3" variant="light" style={{ background: "blue" }}>
+        <Container>
+        <Navbar.Brand className='mr-5 '>
+        <div className='d-flex links'>   <NavLink className={setActive} to="/pokemones">
+          Home
+        </NavLink>
+          <NavLink  className={setActive} to="/">
+            Pokemones
+          </NavLink>
+        </div>
+      </Navbar.Brand>
+      <Navbar.Brand>
+        <img
+        className='imgLogo'
+          width="80"
+          src={logo}
+          alt="" />
+      </Navbar.Brand>
 
-    </div>
-       </nav>
-   
+        </Container>
     
+
+    </Navbar >
+
+
   )
 }
 

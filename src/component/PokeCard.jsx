@@ -1,13 +1,12 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export default function PokeCard({ pokemon }) {
   console.log("🚀 ~ file: PokeCard.jsx ~ line 6 ~ PokeCard ~ pokemon", pokemon)
 
   return (
-    <div className="card"   style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={pokemon.sprites.front_default} />
+    <Card className="mt-5 mx-auto flex-row p-1" style={{ width: '35rem' }}>
+      <Card.Img variant="top" src={pokemon.sprites.front_default} heigth="330"/>
       <Card.Body>
         <Card.Title><h2 className="name_title">{pokemon.name}</h2></Card.Title>
         <Card.Text className="title">
@@ -22,8 +21,7 @@ export default function PokeCard({ pokemon }) {
         <Card.Text className="title">
           Height: {pokemon.height}
         </Card.Text>
-        <Button variant="primary">Volver</Button>
       </Card.Body>
-    </div>
+    </Card>
   )
 }

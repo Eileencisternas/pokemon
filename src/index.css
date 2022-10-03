@@ -17,13 +17,15 @@ code {
   text-align: center;
 }
 .active {
-  color: rgb(91, 236, 157);
+  color: rgb(246, 250, 248);
   font-size: 2rem;
+  margin-left: 25px;
+  padding-left: 5px;
 }
 .title{
   font-weight: 600;
   font-size: 20px;
-  color: blue;
+  color: rgb(43, 255, 0);
   padding-bottom: 10px;
   text-transform: capitalize;
   
@@ -43,4 +45,21 @@ code {
 .card:hover {
   border-color: #21bdd8;
   transform: scale(1.3);
+}
+.imgLogo{
+  border-radius: 80px;
+}
+h1{
+  color: blue;
+}
+.buttonDetails{
+  background-color: rgb(53, 58, 58);
+  color: rgb(239, 234, 243);
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-left: 15px;
+}
+.contentLink{
+ 
+  margin-right: 15px;
 }

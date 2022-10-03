@@ -1,29 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import PokeCard from "../component/PokeCard";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Pokemones() {
-    const [pokemon, setPokemon] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const baseUrl = 'https://pokeapi.co/api/v2/pokemon'
-    const { id } = useParams();
+export default function Pokemones() {
+    const [pokeName, setPokeName] = useState([]);
+    const [pokeSelected, setPokeSelected] = useState("");
+    const navigate = useNavigate();
+    const url = 'https://pokeapi.co/api/v2/pokemon';
 
-    const getPokemon = async (id) => {
-        console.log("🚀 ~ file: Pokemones.jsx ~ line 11 ~ getPokemon ~ id", id)
-        const res = await fetch(`${baseUrl}/${id}`);
+    const getPokemones = async () => {
+        const res = await fetch(url);
         const data = await res.json();
 
-        setPokemon(data);
-        setLoading(false);
+        setPokeName(data.results);
     }
+    const irPoke = () => {
+        if (pokeSelected) navigate(`/pokemones/${pokeSelected}`);
+        else alert("Debe seleccionar un pokemon");
+    }
+
     useEffect(() => {
-        getPokemon(id);
-    }, [id]);
+        getPokemones();
+    }, []);
+
+
+
     return (
-        
-        <div className="mt-5">
-         {loading?'': <PokeCard pokemon={pokemon} />}  
-        </div>
+        <>
+            <div className="mt-5">
+                <h1>Selecciona un pokemon</h1>
+                <select
+                    className="form-selected text-center px-5"
+                    value={pokeSelected}
+                    onChange={(e) => setPokeSelected(e.target.value)}
+                >
+                    <option value="" disabled>Pokemones</option>
+                    {pokeName.map((ele, i) => (
+                        <option key={i} value={ele.name}>{ele.name}</option>
+                    ))}
+                </select>
+                <button className="buttonDetails" onClick={irPoke}>Ver detalle</button>
+            </div>
+        </>
+
     );
 }
-export default Pokemones;

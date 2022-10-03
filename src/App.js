@@ -2,9 +2,9 @@ import "./index.css"
 import  'bootstrap/dist/css/bootstrap.min.css' 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import PokeNav from "./component/PokeNav"
-import Home from "./views/Home"
-import Pokemones from "./views/Pokemones"
-import NotFound from "./views/NotFound"
+import Home from "./views/Pokemones"
+import Pokemones from "./views/Home"
+import PokeDetalle from "./views/PokeDetalle"
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
         <PokeNav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/pokemones/:id" element={<Pokemones />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/pokemones/" element={<Pokemones />} />
+          <Route path="/pokemones/:name" element={<PokeDetalle />} />
         </Routes>
       </BrowserRouter>
     </div>
